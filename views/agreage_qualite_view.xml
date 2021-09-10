@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="view_agreage_qualite_form" model="ir.ui.view">
+            <field name="name">agreage.qualite.form</field>
+            <field name="model">agreage.qualite</field>
+            <field name="arch" type="xml">
+                 <form string="Agréage">
+                <header>
+                        <button name="580" string="Imprimer le cahier de traçabilité" icon="fa-print" type="action" groups="hr.group_hr_manager" class="btn-primary"/>
+                        <button name="580" string="Extraire" icon="fa-download" type="action" groups="hr.group_hr_manager" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <h2>Nouvel Agréage</h2>
+                    <hr></hr>
+                        <group string="Informations générales" icon="fa-book">
+                            <group>
+                                <field name="preleve"/>
+                                <field name="produit_id"/>
+                                <field name="largeur"/>
+                                <field name="nombre"/>
+                                <field name="distance"/>
+                            </group>
+                            <group>
+                                <field name="surface"/>
+                                <field name="mesure"/>
+                                <field name="semaine"/>
+                                <field name="commentaire"/>
+                                <field name="piece_jointe"/>
+                            </group>
+                        </group>
+                </sheet>
+            </form>
+            </field>
+        </record>
+
+         <!--CREATION VUE LISTE TREE-->
+
+        <record id="agreage_qualite_tree" model="ir.ui.view">
+            <field name="name">agreage.qualite.tree</field>
+            <field name="model">agreage.qualite</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="preleve"/>
+                    <field name="produit_id"/>
+                    <field name="largeur"/>
+                    <field name="nombre"/>
+                    <field name="distance"/>
+                    <field name="surface"/>
+                    <field name="mesure"/>
+                    <field name="semaine"/>
+                    <field name="commentaire"/>
+                    <field name="piece_jointe"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--CREER UNE ACTION-->
+
+<!--        <record model="ir.actions.act_window" id="action_activite_production_view">-->
+<!--            <field name="name">Gestion Activite</field>-->
+<!--            <field name="res_model">activite.production</field>-->
+<!--            &lt;!&ndash;field name="view_type">form</field&ndash;&gt;-->
+<!--            <field name="view_mode">form,tree</field>-->
+<!--            <field name="view_id" ref="activite_production_tree"/>-->
+<!--        </record>-->
+
+         <record model="ir.actions.act_window" id="action_agreage_qualite_view">
+            <field name="name">Agréages</field>
+            <field name="res_model">agreage.qualite</field>
+            <field name="view_mode">form,tree</field>
+            <field name="view_id" ref="agreage_qualite_tree"/>
+        </record>
+
+        <!--creating menus-->
+        <menuitem id="agricol_root" name="Gestion Agricol" sequence="3" web_icon="production_agricol_nubium,static/description/logo.png"/>
+<!--        <menuitem id="agricol_production" name="Productions" parent="agricol_root" action="action_nubium_production_view" sequence="1"/>-->
+        <menuitem id="agricol_qualite" name="Qualites" parent="agricol_root" action="action_nubium_qualite_view" sequence="4"/>
+        <menuitem id="agreage_qualite" name="Agréages" parent="agricol_qualite" action="action_agreage_qualite_view" sequence="1"/>
+<!--        <menuitem id="agricol_root" name="Gestion Agricol" sequence="3" web_icon="production_agricol_nubium,static/description/logo.png"/>-->
+<!--        <menuitem id="agricol_production" name="Productions" parent="agricol_root" action="action_nubium_production_view" sequence="1"/>-->
+<!--        <menuitem id="activite_production" name="Activités" parent="agricol_production" action="action_activite_production_view" sequence="1"/>-->
+<!--        <menuitem id="intervension_production" name="Intervension" parent="agricol_production" action="action_nubium_production_view" sequence="1"/>-->
+<!--        <menuitem id="equipement_production" name="Equipement" parent="agricol_production" action="action_nubium_parcellaire_view" sequence="1"/>-->
+<!--        <menuitem id="create_parcelle" name="Create Parcelle" parent="agricol_root"-->
+<!--                  action="create_appointment_wizard" sequence="40"/>-->
+    </data>
+</odoo>

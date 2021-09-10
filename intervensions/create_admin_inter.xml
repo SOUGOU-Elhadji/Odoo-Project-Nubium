@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <record id="create_admin_inter_form" model="ir.ui.view">
+         <field name="name">create.admin.inter.wizard</field>
+         <field name="model">create.admin.inter</field>
+         <field name="arch" type="xml">
+            <form string="Create Administratif intervension">
+                <header>
+                        <button name="580" string="Imprimer le cahier de traçabilité" icon="fa-print" type="action" groups="hr.group_hr_manager" class="btn-primary"/>
+                        <button name="580" string="Extraire" icon="fa-download" type="action" groups="hr.group_hr_manager" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <h2>Nouvelle planification de Tâches administratives</h2>
+                    <notebook>
+                        <page string="Informations générales">
+                        <group string="Informations générales" icon="fa-book">
+                            <group>
+                                <h5><b>Période</b></h5>
+<!--                                <field name="principal" attrs="{'invisible':['|',('auxiliaire','=',True),('independante','=',True)]}"/>-->
+<!--                                <field name="auxiliaire" attrs="{'invisible':['|',('principal','=',True),('independante','=',True)]}"/>-->
+<!--                                <field name="independante" attrs="{'invisible':['|',('principal','=',True),('auxiliaire','=',True)]}"/>-->
+                                <field name="date_debut"/>
+                                <field name="date_fin"/>
+                                <field name="incident_id"/>
+                                <field name="vente"/>
+                            </group>
+                            <group>
+                                <field name="description"/>
+                                <field name="compteur_eau"/>
+                            </group>
+                            <group>
+                                <field name="prescription_id"/>
+                                <field name="etiquette_id"/>
+                            </group>
+                        </group>
+                        </page>
+                <hr></hr>
+
+                        <page string="Paramétres">
+                        <group string="Paramétres" icon="fa-book">
+                            <group>
+                                <field name="responsable_id"/>
+                                <field name="consommable_id"/>
+                            </group>
+                            <group>
+                                <field name="quantite"/>
+                            </group>
+                        </group>
+                        <hr></hr>
+                        </page>
+                        <page string="Prestation de service">
+                        <group string="Prestation de service" icon="fa-book">
+                            <group>
+                                <field name="fournisseur"/>
+                                <field name="commande"/>
+                            </group>
+                            <group>
+                                <field name="reference"/>
+                            </group>
+                        </group>
+                        </page>
+                    </notebook>
+<!--                <footer>-->
+<!--&lt;!&ndash;                    <button name="create_admin_inter" string="Create" type="object" class="btn-primary"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <button string="Cancel" class="btn-secondary" special="cancel"/>&ndash;&gt;-->
+<!--                </footer>-->
+                </sheet>
+            </form>
+         </field>
+     </record>
+
+    <record id="create_admin_inter_intervensions" model="ir.actions.act_window">
+        <field name="name">Create Administratif Intervension</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">create.admin.inter</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="create_admin_inter_form"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

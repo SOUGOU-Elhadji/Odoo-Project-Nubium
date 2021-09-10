@@ -1,0 +1,555 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="view_intervension_production_form" model="ir.ui.view">
+            <field name="name">intervension.production.form</field>
+            <field name="model">intervension.production</field>
+            <field name="arch" type="xml">
+                <form string="Intervension">
+<!--                    <header>-->
+<!--                    <button name="action_confirm" type="object" string="Confirm" class="oe_highlight" states="draft"/>-->
+<!--&lt;!&ndash;                    <button name="action_notify" type="object" string="Notify" class="oe_highlight" states="draft"/>&ndash;&gt;-->
+<!--                    <button name="action_done" type="object" string="Done" class="oe_highlight"-->
+<!--                            attrs="{'invisible': [('state','!=', 'confirm')]}"/>-->
+<!--                    <button name="delete_lines" type="object" string="Delete" class="oe_highlight"/>-->
+<!--&lt;!&ndash;                    <button name="test_recordset" type="object" string="Record Set Operations" class="oe_highlight"/>&ndash;&gt;-->
+<!--                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/>-->
+<!--                </header>-->
+                    <sheet>
+                        <h1><b>Nouvelle planification d’intervention</b></h1>
+                        <hr></hr>
+<!--                         <field name="image" widget="image" class="oe_avatar"/>-->
+                        <group string="Informations générales" icon="fa-book">
+                            <group>
+                                <h6><b>Période</b></h6>
+                                <field name="date_debut"/>
+                                <field name="date_fin"/>
+                            </group>
+                            <group>
+                                <field name="incident_id"/>
+                                <field name="vente"/>
+                            </group>
+                            <group>
+                                <field name="description"/>
+                                <field name="compteur_eau" widget="monetary"/>
+                            </group>
+                            <group>
+                                <field name="prescription_id"/>
+                                <field name="etiquette_id"/>
+                            </group>
+                        </group>
+                        <group string="Prestation de service">
+                            <group>
+                                <field name="fournisseur"/>
+                                <field name="commande"/>
+                            </group>
+                            <group>
+                                <field name="reference"/>
+                            </group>
+                        </group>
+                        <hr></hr>
+                            <group string="Production viticole">
+                                <notebook>
+                                    <page string="Entretien du vignoble">
+                                         <field name="vignoble_id" string="Entretien Vignoble">
+                                            <tree>
+                                                <field name="intervension_id"/>
+                                                <field name="culture_id"/>
+                                                <field name="conducteur_id"/>
+                                                <field name="tracteur_id"/>
+                                                <field name="outils_id"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Fertilisation">
+                                        <field name="fertilisation_id" string="Fertilisation">
+                                            <tree>
+<!--                                                <field name="intervension_id" invisible="1"/>-->
+                                                <field name="epandage_engrais"/>
+                                                <field name="fertilisation_foliaire" invisible="1"/>
+                                                <field name="biostimulant"/>
+                                                <field name="fert_organique"/>
+                                                <field name="fert_minerale"/>
+                                                <field name="apport"/>
+                                                <field name="chaulage"/>
+                                                <field name="culture" invisible="1"/>
+                                                <field name="parcelle" invisible="1"/>
+                                                <field name="parcelle_culture_id" invisible="1"/>
+                                                <field name="quantite" invisible="1"/>
+                                                <field name="conducteur_id" invisible="1"/>
+                                                <field name="tracteur_id" invisible="1"/>
+                                                <field name="epandeur_id" invisible="1"/>
+                                                <field name="outils_id" invisible="1"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Protection du vignoble">
+                                        <field name="protection_vignoble_id" string="Protection du vignoble">
+                                            <tree>
+                                                <field name="herbicide"/>
+                                                <field name="quantite"/>
+                                                <field name="usage"/>
+                                                <field name="pulverisateur"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Entretien du sol">
+                                        <field name="entretien_id" string="Entretien du sol">
+                                            <tree>
+                                                <field name="culture_id"/>
+                                                <field name="conducteur_id"/>
+                                                <field name="tracteur_id"/>
+                                                <field name="outils_id"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Implantation de vignes">
+                                        <field name="implantation_id" string="Implantation">
+                                            <tree>
+                                                <field name="cepage"/>
+                                                <field name="num_lot"/>
+                                                <field name="app_cert"/>
+                                                <field name="intervalle"/>
+                                                <field name="select"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Palissage">
+                                        <field name="palissage_id" string="Palissage">
+                                            <tree>
+                                                <field name="culture"/>
+                                                <field name="piquet"/>
+                                                <field name="quantite"/>
+                                                <field name="operateur"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Irrigation">
+                                        <field name="irrigation_id" string="Irrigation">
+                                            <tree>
+                                                <field name="culture"/>
+                                                <field name="eau"/>
+                                                <field name="quantite"/>
+                                                <field name="operateur"/>
+                                                <field name="tracteur"/>
+                                                <field name="equipement"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                </notebook>
+                            </group>
+
+                            <hr></hr>
+
+                            <group string="Production végétale">
+                                <notebook>
+                                    <page string="Travail du sol">
+                                        <field name="travail_sol_id" string="Travail du sol">
+                                            <tree>
+                                                <field name="parcelle"/>
+                                                <field name="conducteur_id"/>
+                                                <field name="tracteur_id"/>
+                                                <field name="tamiseuse_id"/>
+                                                <field name="remorque_id"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Implantation des cultures">
+                                        <field name="implantation_culture_id" string="Implantation">
+                                            <tree>
+                                                <field name="parcelle"/>
+                                                <field name="culture"/>
+                                                <field name="variete"/>
+                                                <field name="num_lot"/>
+                                                <field name="semences"/>
+                                                <field name="quantite"/>
+                                                <field name="semoir"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Fertilisation">
+                                        <field name="fertilisation_vegetale_id" string="Fertilisation">
+                                            <tree>
+                                                <field name="biostimulant"/>
+                                                <field name="parcelle_culture"/>
+                                                <field name="engrais"/>
+                                                <field name="quantite"/>
+                                                <field name="conducteur_id"/>
+                                                <field name="tracteur"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Irrigation">
+                                        <field name="irrigation_vegetale_id" string="Irrigation">
+                                            <tree>
+                                                <field name="zone"/>
+                                                <field name="operateur"/>
+                                                <field name="epandeur"/>
+                                                <field name="equipement"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Protection des cultures">
+                                        <field name="protection_culture_id" string="Protection">
+                                            <tree>
+                                                <field name="parcelle_culture"/>
+                                                <field name="semences"/>
+                                                <field name="quantite"/>
+                                                <field name="conducteur_id"/>
+                                                <field name="operateur"/>
+                                                <field name="tracteur"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Entretien des cultures">
+                                        <field name="entretien_culture_id" string="Entretien">
+                                            <tree>
+                                                <field name="culture"/>
+                                                <field name="conducteur_id"/>
+                                                <field name="tracteur"/>
+                                                <field name="bineuse"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Récolte">
+                                        <field name="recolte_id" string="Récolte">
+                                            <tree>
+                                                <field name="culture"/>
+                                                <field name="matiere"/>
+                                                <field name="quantite"/>
+                                                <field name="nouveau_nom"/>
+                                                <field name="conducteur_id"/>
+                                                <field name="outil_recolte"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Travaux fonçiers sur installations">
+                                        <field name="travaux_fonciers_id" string="Travaux">
+                                            <tree>
+                                                <field name="zone"/>
+                                                <field name="consommable"/>
+                                                <field name="quantite"/>
+                                                <field name="conducteur_id"/>
+                                                <field name="operateur"/>
+                                                <field name="equipement"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                </notebook>
+                            </group>
+
+                            <hr></hr>
+
+                            <group string="Production animale">
+                                <notebook>
+                                    <page string="Reproduction animale">
+                                        <field name="reproduction_id" string="Reproduction">
+                                            <tree>
+                                                <field name="mere"/>
+                                                <field name="nouveau_ne"/>
+                                                <field name="nouveau_nom"/>
+                                                <field name="num_ident"/>
+                                                <field name="sexe"/>
+                                                <field name="bonne_sante"/>
+                                                <field name="condition"/>
+                                                <field name="soigneur"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Identification">
+                                        <field name="identification_id" string="Identification">
+                                            <tree>
+                                                <field name="animal"/>
+                                                <field name="num_ident"/>
+                                                <field name="operateur"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Alimentation et abreuvage">
+                                        <field name="alimentation_id" string="Alimentation">
+                                            <tree>
+                                                <field name="culture"/>
+                                                <field name="parcelle"/>
+                                                <field name="parcelle_culture"/>
+                                                <field name="troupeau_id"/>
+                                                <field name="operateur"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Produits animaux">
+                                        <field name="produit_animal_id" string="Produits">
+                                            <tree>
+                                                <field name="volailles"/>
+                                                <field name="oeuf"/>
+                                                <field name="quantite"/>
+                                                <field name="nouveau_nom"/>
+                                                <field name="operateur"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Traitements et soins">
+                                        <field name="traitement_id" string="Traitements">
+                                            <tree>
+                                                <field name="animal_id"/>
+                                                <field name="new_emplacement"/>
+                                                <field name="new_group"/>
+                                                <field name="new_variant"/>
+                                                <field name="conducteur_id"/>
+                                                <field name="operateur"/>
+                                                <field name="vehicule_id"/>
+                                                <field name="remorque_id"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Entretien de l'habitat">
+                                        <field name="entretien_habitat_id" string="Entretien">
+                                            <tree>
+                                                <field name="zone_heberg"/>
+                                                <field name="desinfectant"/>
+                                                <field name="quantite_desinfectant"/>
+                                                <field name="produit_nett"/>
+                                                <field name="quantite_produit"/>
+                                                <field name="conducteur_id"/>
+                                                <field name="operateur"/>
+                                                <field name="outil_nettoi"/>
+                                                <field name="tracteur"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Travaux fonçiers sur installations">
+                                        <field name="travaux_ani_id" string="Travaux fonçiers">
+                                            <tree>
+                                                <field name="nettoyage"/>
+                                                <field name="reparation"/>
+                                                <field name="construction"/>
+                                                <field name="renovation"/>
+                                                <field name="zone"/>
+                                                <field name="consommable"/>
+                                                <field name="quantite"/>
+                                                <field name="conducteur_id"/>
+                                                <field name="operateur"/>
+                                                <field name="tracteur"/>
+                                                <field name="equipement"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                </notebook>
+                            </group>
+
+                            <hr></hr>
+
+                            <group string="Transformation">
+                                <notebook>
+                                    <page string="Transformation produits végétaux">
+                                        <field name="transformation_id" string="Transformation">
+                                            <tree>
+                                                <field name="culture"/>
+                                                <field name="parcelle"/>
+                                                <field name="parcelle_culture"/>
+                                                <field name="produit_a_trier"/>
+                                                <field name="quantite"/>
+                                                <field name="unite_tri"/>
+                                                <field name="produit_tries" invisible="1"/>
+                                                <field name="quantite_prod" invisible="1"/>
+                                                <field name="unite_prod_tries" invisible="1"/>
+                                                <field name="new_name" invisible="1"/>
+                                                <field name="ecart_tri" invisible="1"/>
+                                                <field name="quantite_ecart" invisible="1"/>
+                                                <field name="unite_ecart" invisible="1"/>
+                                                <field name="new_name_ecart" invisible="1"/>
+                                                <field name="produit_phyto" invisible="1"/>
+                                                <field name="usage" invisible="1"/>
+                                                <field name="quantite_phyto" invisible="1"/>
+                                                <field name="unite" invisible="1"/>
+                                                <field name="equipement" invisible="1"/>
+                                                <field name="operateur" invisible="1"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Conditionnement">
+                                        <field name="conditionnement_id" string="Conditionnement">
+                                            <tree>
+                                                <field name="produit_a_preparer"/>
+                                                <field name="quantite"/>
+                                                <field name="unite"/>
+                                                <field name="materiel" invisible="1"/>
+                                                <field name="quantite_mat" invisible="1"/>
+                                                <field name="unite_mat" invisible="1"/>
+                                                <field name="produit_preparer" invisible="1"/>
+                                                <field name="quantite_prod" invisible="1"/>
+                                                <field name="unite_prod" invisible="1"/>
+                                                <field name="new_name"/>
+                                                <field name="equipement"/>
+                                                <field name="operateur"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Vinification">
+                                        <field name="viniTrans_id" string="Vinification">
+                                            <tree>
+                                                <field name="cuve"/>
+                                                <field name="jus_fermente"/>
+                                                <field name="produit_oenologique"/>
+                                                <field name="quantite" invisible="1"/>
+                                                <field name="unite" invisible="1"/>
+                                                <field name="operateur_chai" invisible="1"/>
+                                                <field name="jus_ferm" invisible="1"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                </notebook>
+                            </group>
+
+                            <hr></hr>
+
+                            <group string="Maintenance">
+                                <notebook>
+                                    <page string="Alimentation matériel">
+                                        <field name="alimentation_materiel_id" string="Alimentation">
+                                            <tree>
+                                                <field name="equipement"/>
+                                                <field name="carburant"/>
+                                                <field name="quantite"/>
+                                                <field name="unite"/>
+                                                <field name="mecanicien"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Réparation et maintenance">
+                                        <field name="reparation_id" string="Réparation">
+                                            <tree>
+                                                <field name="preventice"/>
+                                                <field name="curative"/>
+                                                <field name="amelioration"/>
+                                                <field name="equipement"/>
+                                                <field name="composant"/>
+                                                <field name="piece_rempl"/>
+                                                <field name="quantite" invisible="1"/>
+                                                <field name="unite" invisible="1"/>
+                                                <field name="composant_piece" invisible="1"/>
+                                                <field name="consommable" invisible="1"/>
+                                                <field name="quantite_cons" invisible="1"/>
+                                                <field name="unite_cons" invisible="1"/>
+                                                <field name="mecanicien" invisible="1"/>
+                                                <field name="outil" invisible="1"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Manutention">
+                                        <field name="manutention_id" string="Manutention">
+                                            <tree>
+                                                <field name="operateur"/>
+                                                <field name="parcelle"/>
+                                                <field name="equipement"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                    <page string="Travaux fonçiers sur installations">
+                                        <field name="travaux_maintenance_id" string="Travaux">
+                                            <tree>
+                                                <field name="nettoyage"/>
+                                                <field name="reparation"/>
+                                                <field name="construction"/>
+                                                <field name="renovation"/>
+                                                <field name="zone"/>
+                                                <field name="consommable" invisible="1"/>
+                                                <field name="quantite" invisible="1"/>
+                                                <field name="unite" invisible="1"/>
+                                                <field name="conducteur" invisible="1"/>
+                                                <field name="operateur" invisible="1"/>
+                                                <field name="tracteur"/>
+                                                <field name="equipement"/>
+                                            </tree>
+                                        </field>
+                                    </page>
+                                </notebook>
+                            </group>
+
+                            <hr></hr>
+
+                            <group string="Administratif">
+                                <notebook>
+                                    <page string="Taches administratives">
+                                         <field name="admin_id">
+                                             <tree>
+                                                 <field name="date_debut"/>
+                                                 <field name="date_fin"/>
+                                                 <field name="etiquette_id"/>
+                                                 <field name="prescription_id"/>
+                                                 <field name="quantite"/>
+                                             </tree>
+                                         </field>
+                                    </page>
+                                </notebook>
+                            </group>
+                            <hr></hr>
+                        <footer style="text-align: center; margin-bottom: 1%">Tout droit réservé</footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+         <!--CREATION VUE LISTE TREE-->
+
+        <record id="intervension_production_tree" model="ir.ui.view">
+            <field name="name">intervension.production.tree</field>
+            <field name="model">intervension.production</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="date_debut"/>
+                    <field name="date_fin"/>
+                    <field name="incident_id"/>
+                    <field name="vente"/>
+                    <field name="description"/>
+                    <field name="compteur_eau"/>
+                    <field name="prescription_id"/>
+                    <field name="etiquette_id"/>
+                    <field name="vignoble_id"/>
+                    <field name="fertilisation_id" invisible="1"/>
+                    <field name="implantation_id" invisible="1"/>
+                    <field name="entretien_id" invisible="1"/>
+<!--                    <field name="conducteur_id" invisible="1"/>-->
+<!--                    <field name="tracteur_id" invisible="1"/>-->
+<!--                    <field name="outils_id" invisible="1"/>-->
+<!--                    <field name="fournisseur" invisible="1"/>-->
+<!--                    <field name="commande" invisible="1"/>-->
+<!--                    <field name="reference"/>-->
+                </tree>
+            </field>
+        </record>
+
+        <!--CREER UNE ACTION-->
+
+<!--         <record model="ir.actions.act_window" id="action_activite_vignoble">-->
+<!--            <field name="name">Entretien Vignoble</field>-->
+<!--            <field name="type">ir.actions.act_window</field>-->
+<!--            <field name="res_model">activite.vignoble</field>-->
+<!--            <field name="domain">[]</field>-->
+<!--            <field name="view_mode">form,tree</field>-->
+<!--            <field name="view_id" ref="activite_vignoble_tree"/>-->
+<!--            <field name="binding_model_id" ref="model_intervension_production"/>-->
+<!--        </record>-->
+
+        <record model="ir.actions.act_window" id="action_nubium_production_view">
+            <field name="name">Gestion Productions</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">nubium.production</field>
+            <field name="view_mode">form,tree,kanban</field>
+            <field name="view_id" ref="nubium_production_tree"/>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_intervension_production_view">
+            <field name="name">Intervensions</field>
+            <field name="res_model">intervension.production</field>
+            <field name="view_mode">form,tree</field>
+            <field name="view_id" ref="intervension_production_tree"/>
+        </record>
+
+
+        <!--creating menus-->
+        <menuitem id="agricol_root" name="Production Agricole" sequence="5" web_icon="production_agricol_nubium,static/description/logo.png"/>
+        <menuitem id="agricol_production" name="Productions" parent="agricol_root" action="action_nubium_production_view" sequence="3"/>
+        <menuitem id="intervension_production" name="Intervension" parent="agricol_production" action="action_intervension_production_view" sequence="1"/>
+
+    </data>
+</odoo>

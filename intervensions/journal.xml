@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <record id="create_journal_form" model="ir.ui.view">
+         <field name="name">create.journal.intervension</field>
+         <field name="model">create.journal</field>
+         <field name="arch" type="xml">
+            <form string="Create Journal">
+                <sheet>
+                    <h2>NOUVELLE JOURNAL</h2>
+                        <group string="Informations générales" icon="fa-book">
+                            <group>
+                                <field name="name"/>
+                                <field name="code"/>
+                                <field name="devise"/>
+                                <field name="ventes"/>
+                                <field name="achat"/>
+                                <field name="immobilisation"/>
+                                <field name="banque"/>
+                                <field name="report"/>
+                                <field name="operation"/>
+                            </group>
+                            <group>
+                                <field name="caisse"/>
+                                <field name="reserve"/>
+                                <field name="cloture"/>
+                                <field name="resultat"/>
+                                <field name="comptable_id"/>
+                                <field name="ecart"/>
+                                <field name="inventaire"/>
+                                <field name="facture"/>
+                                <field name="code_isacompta"/>
+                                <field name="libelle_isacompta"/>
+                            </group>
+                        </group>
+                        <hr></hr>
+                </sheet>
+            </form>
+         </field>
+     </record>
+
+    <!--CREATION VUE LISTE TREE-->
+
+        <record id="create_journal_tree" model="ir.ui.view">
+            <field name="name">create.journal.tree</field>
+            <field name="model">create.journal</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="devise"/>
+                    <field name="ventes"/>
+                    <field name="achat"/>
+                    <field name="immobilisation"/>
+                    <field name="banque"/>
+                    <field name="report"/>
+                    <field name="operation"/>
+                    <field name="caisse"/>
+                    <field name="reserve"/>
+                    <field name="cloture"/>
+                    <field name="resultat"/>
+                    <field name="comptable_id"/>
+                    <field name="ecart"/>
+                    <field name="inventaire"/>
+                    <field name="facture"/>
+                    <field name="code_isacompta"/>
+                    <field name="libelle_isacompta"/>
+                </tree>
+            </field>
+        </record>
+
+    <!--CREER UNE ACTION-->
+
+    <record id="create_journal_intervension" model="ir.actions.act_window">
+        <field name="name">Create Journal</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">create.journal</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="create_journal_form"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

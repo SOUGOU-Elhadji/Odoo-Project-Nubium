@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <record id="create_prescription_form" model="ir.ui.view">
+         <field name="name">create.prescription.intervension</field>
+         <field name="model">create.prescription</field>
+         <field name="arch" type="xml">
+            <form string="Create Prescription">
+                <sheet>
+                    <h2>NOUVELLE PRESCRIPTION</h2>
+                        <group string="Informations générales" icon="fa-book">
+                            <group>
+                                <field name="numero"/>
+                                <field name="date"/>
+                            </group>
+                            <group>
+                                <field name="prescripteur_id"/>
+                                <field name="description"/>
+<!--                                <field name="piece_jointe"/>-->
+                            </group>
+                        </group>
+                    <hr></hr>
+                        <group string="Pièces Jointes" icon="fa-book">
+                            <group>
+                                <field name="piece_jointe"/>
+                            </group>
+                        </group>
+                </sheet>
+            </form>
+         </field>
+     </record>
+
+    <!--CREATION VUE LISTE TREE-->
+
+        <record id="create_prescription_tree" model="ir.ui.view">
+            <field name="name">create.prescription.tree</field>
+            <field name="model">create.prescription</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="numero"/>
+                    <field name="date"/>
+                    <field name="prescripteur_id"/>
+                    <field name="description"/>
+                    <field name="piece_jointe"/>
+                </tree>
+            </field>
+        </record>
+
+    <!--CREER UNE ACTION-->
+
+    <record id="create_prescription_intervension" model="ir.actions.act_window">
+        <field name="name">Create Prescription</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">create.prescription</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="create_prescription_form"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

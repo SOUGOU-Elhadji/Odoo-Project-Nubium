@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <!-- Form view definition -->
+        <record id="view_activite_administratif_form" model="ir.ui.view">
+            <field name="name">activite.administratif.form</field>
+            <field name="model">activite.administratif</field>
+            <field name="arch" type="xml">
+                <form string="Budget">
+                    <sheet>
+                        <notebook>
+                            <page string="Ajouter une dépense">
+                                <field name="depense_id">
+                                    <tree>
+                                        <field name="produit_id"/>
+                                        <field name="depense_admin_id" invisible="1"/>
+                                        <field name="methode_calcul"/>
+                                        <field name="quantite"/>
+                                        <field name="prix_unitaire"/>
+                                        <field name="montant_depense" style="color: red; font-weight:bold"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Ajouter une recette">
+                                <field name="recette_id">
+                                    <tree>
+                                        <field name="produit_id"/>
+                                        <field name="recette_admin_id" invisible="1"/>
+                                        <field name="methode_calcul_recette"/>
+                                        <field name="quantite_recette"/>
+                                        <field name="prix_unitaire_recette"/>
+                                        <field name="montant_recette" style="color: red; font-weight:bold"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+         <!--CREATION VUE LISTE TREE-->
+
+        <record id="activite_administratif_tree" model="ir.ui.view">
+            <field name="name">activite.administratif.tree</field>
+            <field name="model">activite.administratif</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="produit_id"/>
+                    <field name="admin_id" invisible="1"/>
+                    <field name="montant_recette"/>
+                    <field name="montant_depense"/>
+                    <field name="montant_total"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--CREER UNE ACTION-->
+
+        <record model="ir.actions.act_window" id="activite_administratif_view">
+            <field name="name">Aministratif</field>
+            <field name="res_model">activite.administratif</field>
+            <field name="view_mode">form,tree</field>
+            <field name="view_id" ref="activite_administratif_tree"/>
+        </record>
+
+    </data>
+</odoo>

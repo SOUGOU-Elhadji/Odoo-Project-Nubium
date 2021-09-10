@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <record id="create_paiement_form" model="ir.ui.view">
+         <field name="name">Paiement</field>
+         <field name="model">create.paiement</field>
+         <field name="arch" type="xml">
+            <form string="Create Paiement">
+                <sheet>
+                    <h2>NOUVEAU MODE DE PAIEMENT</h2>
+                        <group string="Informations générales" icon="fa-book">
+                            <group>
+                                <field name="nom"/>
+                                <field name="tresorerie_id"/>
+                            </group>
+                            <group>
+                                <field name="comptabilite"/>
+                                <field name="sepa"/>
+                            </group>
+                        </group>
+                        <hr></hr>
+                </sheet>
+            </form>
+         </field>
+     </record>
+
+    <!--CREATION VUE LISTE TREE-->
+
+        <record id="create8paiement_tree" model="ir.ui.view">
+            <field name="name">create.paiement.tree</field>
+            <field name="model">create.paiement</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="nom"/>
+                    <field name="tresorerie_id"/>
+                    <field name="comptabilite"/>
+                    <field name="sepa"/>
+                </tree>
+            </field>
+        </record>
+
+    <!--CREER UNE ACTION-->
+
+    <record id="create_paiement_intervension" model="ir.actions.act_window">
+        <field name="name">Create Paiement</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">create.paiement</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="create_paiement_form"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

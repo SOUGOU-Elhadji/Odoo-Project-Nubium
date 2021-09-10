@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <record id="create_equipement_form" model="ir.ui.view">
+         <field name="name">create.equipement.equipement</field>
+         <field name="model">create.equipement</field>
+         <field name="arch" type="xml">
+            <form string="Create Equipement">
+                <header>
+                        <button name="580" string="Imprimer le cahier de traçabilité" icon="fa-print" type="action" groups="hr.group_hr_manager" class="btn-primary"/>
+                        <button name="580" string="Extraire" icon="fa-download" type="action" groups="hr.group_hr_manager" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <h2>Nouvel équipement</h2>
+                    <notebook>
+                        <page string="Informations générales">
+                        <group string="Informations générales" icon="fa-book">
+                            <group>
+                                <h5><b>Période</b></h5>
+                                <field name="nom"/>
+                                <field name="numero_travail"/>
+                                <field name="type"/>
+                            </group>
+                            <group>
+                                <field name="date_mis_service"/>
+                                <field name="date_mis_robut"/>
+                                <field name="libelle_id"/>
+                            </group>
+                            <group>
+                                <field name="proprietaire_initial_id"/>
+                                <field name="lieu_stockage_id"/>
+                                <field name="geolocalisation"/>
+                                <field name="piece_jointe"/>
+                            </group>
+                        </group>
+                        </page>
+                <hr></hr>
+                        <page string="Identification">
+                        <group string="Identification" icon="fa-book">
+                            <group>
+                                <field name="photo"/>
+                                <field name="description"/>
+                            </group>
+                        </group>
+                        <hr></hr>
+                        </page>
+                        <page string="Indicateur">
+                        <group string="Indicateur" icon="fa-book">
+                            <group>
+                                <field name="largeur"/>
+                                <field name="mesure"/>
+                            </group>
+                        </group>
+                        </page>
+                    </notebook>
+                <footer>
+<!--                    <button name="create_admin_inter" string="Create" type="object" class="btn-primary"/>-->
+<!--                    <button string="Cancel" class="btn-secondary" special="cancel"/>-->
+                </footer>
+                </sheet>
+            </form>
+         </field>
+     </record>
+
+    <record id="create_equipement_equipement" model="ir.actions.act_window">
+        <field name="name">Create Equipement</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">create.equipement</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="create_equipement_form"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

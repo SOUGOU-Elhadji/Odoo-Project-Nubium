@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="view_parcelle_parcellaire_form" model="ir.ui.view">
+            <field name="name">parcelle.parcellaire.form</field>
+            <field name="model">parcelle.parcellaire</field>
+            <field name="arch" type="xml">
+                <form string="Parcellaire">
+                    <sheet>
+                        <div>
+                            <h2>
+                                Nouvelle parcelle
+                            </h2>
+                            <hr></hr>
+                            <div class="oe_left">
+                                <div class="oe_title">
+                                    <h2>
+                                    <label for="date_debut_travaux"/>
+                                    </h2>
+                                    <h2>
+                                        <field name="date_debut_travaux" class="oe_inline"/>
+                                    </h2>
+                                </div>
+                            </div>
+                            <group string="Information générale">
+                            <group>
+                                <h5>Campagnes prévisionnelles de pleine production</h5>
+				                <field name="a_partir"/>
+				                <field name="end_date"/>
+                            </group>
+                            <group>
+                                <field name="prod_ref"/>
+				                <field name="utilisation"/>
+                            </group>
+                            <group>
+                                <h5>Type de support</h5>
+                                <field name="aucun"/>
+				                <field name="bordure"/>
+				                <field name="culture"/>
+				                <field name="jachere"/>
+				                <field name="zone_tampon"/>
+                            </group>
+                            <group>
+                                <field name="zone_cultivable"/>
+				                <field name="irrigue"/>
+				                <field name="piege_nitrates"/>
+                                <field name="piece_jointe"/>
+                            </group>
+                            </group>
+                            <hr></hr>
+
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+         <!--CREATION VUE LISTE TREE-->
+
+        <record id="parcelle_parcellaire_tree" model="ir.ui.view">
+            <field name="name">parcelle.parcellaire.tree</field>
+            <field name="model">parcelle.parcellaire</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="date_debut_travaux"/>
+                    <field name="a_partir"/>
+                    <field name="end_date"/>
+                    <field name="prod_ref"/>
+                    <field name="utilisation"/>
+                    <field name="aucun"/>
+                    <field name="bordure"/>
+                    <field name="culture"/>
+                    <field name="jachere"/>
+                    <field name="zone_tampon"/>
+                    <field name="zone_cultivable"/>
+                    <field name="irrigue"/>
+                    <field name="piege_nitrates"/>
+                    <field name="piece_jointe"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--CREER UNE ACTION-->
+
+        <record model="ir.actions.act_window" id="action_parcelle_parcellaire_view">
+            <field name="name">Parcelles</field>
+            <field name="res_model">parcelle.parcellaire</field>
+            <field name="view_mode">form,tree</field>
+            <field name="view_id" ref="parcelle_parcellaire_tree"/>
+        </record>
+
+        <!--creating menus-->
+        <menuitem id="agricol_root" name="Production Agricole" sequence="4" web_icon="production_agricol_nubium,static/description/logo.png"/>
+        <menuitem id="agricol_parcellaire" name="Parcellaires" parent="agricol_root" action="action_nubium_parcellaire_view" sequence="3"/>
+        <menuitem id="parcelle_parcellaire" name="Parcelles" parent="agricol_parcellaire" action="action_parcelle_parcellaire_view" sequence="1"/>
+    </data>
+</odoo>

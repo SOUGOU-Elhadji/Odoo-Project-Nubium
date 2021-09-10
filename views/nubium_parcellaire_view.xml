@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="view_nubium_parcellaire_form" model="ir.ui.view">
+            <field name="name">nubium.parcellaire.form</field>
+            <field name="model">nubium.parcellaire</field>
+            <field name="arch" type="xml">
+                <form string="Parcellaire">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="toggle_active" class="oe_stat_button" type="object" icon="fa-pencil">
+                                <field string="Zones" name="zone" widget="statinfo"/>
+                            </button>
+                            <button name="toggle_active" class="oe_stat_button" type="object" icon="fa-cogs">
+                                <field string="Parcelles" name="parcelle" widget="statinfo"/>
+                            </button>
+                            <button name="toggle_active" class="oe_stat_button" type="object" icon="fa-usd">
+                                <field string="Cultures" name="culture" widget="statinfo"/>
+                            </button>
+                        </div>
+                        <field name="image" widget="image" class="oe_avatar"/>
+                        <div>
+                            <div class="oe_left">
+                                <div class="oe_title">
+                                    <label for="name" string="Gestion parcellaire"/>
+                                    <h2>
+                                        <field name="name" class="oe_inline"/>
+                                    </h2>
+                                </div>
+                            </div>
+                            <group>
+                                <group>
+                                    <field name="activity"/>
+                                    <field name="date"/>
+                                </group>
+                                <group>
+                                    <field name="code"/>
+                                </group>
+                            </group>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+         <!--CREATION VUE LISTE-->
+
+        <record id="nubium_parcellaire_tree" model="ir.ui.view">
+            <field name="name">nubium.parcellaire.tree</field>
+            <field name="model">nubium.parcellaire</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="activity"/>
+                    <field name="date"/>
+                    <field name="code"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--CREER UNE ACTION-->
+
+        <record model="ir.actions.act_window" id="action_nubium_parcellaire_view">
+            <field name="name">Gestion Parcellaires</field>
+            <field name="res_model">nubium.parcellaire</field>
+            <field name="view_mode">form,tree</field>
+            <field name="view_id" ref="nubium_parcellaire_tree"/>
+        </record>
+
+        <!--creating menus-->
+        <menuitem id="agricol_root" name="Production Agricole" sequence="4" web_icon="production_agricol_nubium,static/description/logo.png"/>
+        <menuitem id="agricol_parcellaire" name="Parcellaires" parent="agricol_root" action="action_nubium_parcellaire_view" sequence="3"/>
+
+    </data>
+</odoo>

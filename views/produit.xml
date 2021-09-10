@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="view_create_produit_form" model="ir.ui.view">
+            <field name="name">create.produit.form</field>
+            <field name="model">create.produit</field>
+            <field name="arch" type="xml">
+                <form string="Produit">
+                <sheet>
+                    <group string="Information Générales">
+                    <group>
+                        <field name="nom"/>
+                        <field name="numero" placeholder="PN000000000125"/>
+                        <field name="actif"/>
+                        <field name="variete"/>
+                    </group>
+                    <group>
+                        <field name="unitaire"/>
+                        <field name="entier"/>
+                        <field name="decimal"/>
+                        <field name="photo"/>
+                    </group>
+                    <group>
+                        <field name="abonnement"/>
+                        <field name="type_id"/>
+                        <field name="nombre_annee"/>
+                    </group>
+                    <group>
+                        <field name="nombre_mois"/>
+                        <field name="nombre_jour"/>
+                        <field name="description"/>
+                    </group>
+                    </group>
+                    <hr></hr>
+                    <group string="Définition">
+                    <group>
+                        <h6><b>Liste des compétences</b></h6>
+                        <field name="liste_competence"/>
+                    </group>
+                    <group>
+                        <h6><b>Listes des indicateurs fixes</b></h6>
+                        <field name="acidite"/>
+                        <field name="appelation_certi"/>
+                        <field name="avortement"/>
+                        <field name="bonne_sante"/>
+                        <field name="calibre"/>
+                    </group>
+                    <group>
+                        <h6><b>Listes des indicateurs variables</b></h6>
+                        <field name="a_totale"/>
+                        <field name="appelation_cert"/>
+                        <field name="avorte"/>
+                        <field name="bonne_sant"/>
+                        <field name="calibr"/>
+                    </group>
+                    <group>
+                        <h6><b>Points d'attache</b></h6>
+                        <field name="arriere"/>
+                        <field name="avant"/>
+                    </group>
+                    </group>
+                </sheet>
+            </form>
+            </field>
+        </record>
+
+         <!--CREATION VUE LISTE TREE-->
+
+        <record id="create_produit_tree" model="ir.ui.view">
+            <field name="name">create.produit.tree</field>
+            <field name="model">create.produit</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="nom"/>
+                    <field name="numero"/>
+                    <field name="actif"/>
+                    <field name="variete"/>
+                    <field name="unitaire"/>
+                    <field name="entier"/>
+                    <field name="decimal" invisible="1"/>
+                    <field name="photo"/>
+                    <field name="abonnement" invisible="1"/>
+                    <field name="type_id" invisible="1"/>
+                    <field name="nombre_annee"/>
+                    <field name="nombre_mois"/>
+                    <field name="nombre_jour"/>
+                    <field name="description"/>
+                    <field name="liste_competence" invisible="1"/>
+                    <field name="acidite" invisible="1"/>
+                    <field name="appelation_certi" invisible="1"/>
+                    <field name="avortement" invisible="1"/>
+                    <field name="bonne_sante" invisible="1"/>
+                    <field name="calibre" invisible="1"/>
+                    <field name="a_totale" invisible="1"/>
+                    <field name="appelation_cert" invisible="1"/>
+                    <field name="avorte" invisible="1"/>
+                    <field name="bonne_sant" invisible="1"/>
+                    <field name="calibr" invisible="1"/>
+                    <field name="arriere" invisible="1"/>
+                    <field name="avant" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--CREER UNE ACTION-->
+
+        <record model="ir.actions.act_window" id="action_create_produit">
+            <field name="name">Produits</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">create.produit</field>
+            <field name="domain">[]</field>
+            <field name="view_mode">form,tree</field>
+            <field name="view_id" ref="create_produit_tree"/>
+            <field name="binding_model_id" ref="model_activite_production"/>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_create_produit_view">
+            <field name="name">Produit</field>
+            <field name="res_model">create.produit</field>
+            <field name="view_mode">form,tree</field>
+            <field name="view_id" ref="create_produit_tree"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="view_zone_parcellaire_form" model="ir.ui.view">
+            <field name="name">zone.parcellaire.form</field>
+            <field name="model">zone.parcellaire</field>
+            <field name="arch" type="xml">
+                    <form string="Zones cultivables">
+                        <header>
+                                <button name="580" string="Imprimer le cahier de traçabilité" icon="fa-print" type="action" groups="hr.group_hr_manager" class="btn-primary"/>
+                                <button name="580" string="Extraire" icon="fa-download" type="action" groups="hr.group_hr_manager" class="btn-primary"/>
+                        </header>
+                        <sheet>
+                            <h2>Nouvelle zone cultivable</h2>
+                            <notebook>
+                                <page string="Informations générales">
+                                <group string="Informations générales" icon="fa-book">
+                                    <group>
+                                        <field name="name"/>
+                                        <field name="number"/>
+                                        <field name="system_prod"/>
+                                        <field name="nature"/>
+                                    </group>
+                                    <group>
+                                        <field name="exploitant_id"/>
+                                        <field name="proprietaire_id"/>
+                                        <field name="description"/>
+                                        <field name="forme"/>
+                                    </group>
+                                </group>
+                                </page>
+                                <hr></hr>
+                            </notebook>
+                        </sheet>
+                    </form>
+            </field>
+        </record>
+
+         <!--CREATION VUE LISTE TREE-->
+
+        <record id="zone_parcellaire_tree" model="ir.ui.view">
+            <field name="name">zone.parcellaire.tree</field>
+            <field name="model">zone.parcellaire</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="number"/>
+                    <field name="system_prod"/>
+                    <field name="nature"/>
+                    <field name="exploitant_id"/>
+                    <field name="proprietaire_id"/>
+                    <field name="description"/>
+                    <field name="forme"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--CREER UNE ACTION-->
+
+        <record model="ir.actions.act_window" id="action_zone_parcellaire_view">
+            <field name="name">Zones Cultivables</field>
+            <field name="res_model">zone.parcellaire</field>
+            <field name="view_mode">form,tree</field>
+            <field name="view_id" ref="zone_parcellaire_tree"/>
+        </record>
+
+        <!--creating menus-->
+        <menuitem id="agricol_root" name="Production Agricole" sequence="4" web_icon="production_agricol_nubium,static/description/logo.png"/>
+        <menuitem id="agricol_parcellaire" name="Parcellaires" parent="agricol_root" action="action_nubium_parcellaire_view" sequence="3"/>
+        <menuitem id="zone_parcellaire" name="Zones Cultivables" parent="agricol_parcellaire" action="action_zone_parcellaire_view" sequence="1"/>
+
+    </data>
+</odoo>

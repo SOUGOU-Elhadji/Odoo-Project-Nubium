@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="view_incidence_qualite_form" model="ir.ui.view">
+            <field name="name">incidence.qualite.form</field>
+            <field name="model">incidence.qualite</field>
+            <field name="arch" type="xml">
+                <form string="Incidence">
+                <header>
+                        <button name="580" string="Imprimer le cahier de traçabilité" icon="fa-print" type="action" groups="hr.group_hr_manager" class="btn-primary"/>
+                        <button name="580" string="Extraire" icon="fa-download" type="action" groups="hr.group_hr_manager" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <h2>Nouvel Incident</h2>
+                    <hr></hr>
+                        <group string="Informations générales" icon="fa-book">
+                            <group>
+                                <field name="type"/>
+                                <field name="date"/>
+                                <field name="photo"/>
+                            </group>
+                            <group>
+                                <field name="description"/>
+                                <field name="priorite"/>
+                            </group>
+                            <group>
+                                <field name="gravite"/>
+                                <field name="geolocalisation"/>
+                            </group>
+                        </group>
+                        <hr></hr>
+                        <group string="Pièce Jointe">
+                            <group>
+                                <field name="piece_jointe"/>
+                            </group>
+                        </group>
+                </sheet>
+            </form>
+            </field>
+        </record>
+
+         <!--CREATION VUE LISTE TREE-->
+
+        <record id="incidence_qualite_tree" model="ir.ui.view">
+            <field name="name">incidence.qualite.tree</field>
+            <field name="model">incidence.qualite</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="type"/>
+                    <field name="date"/>
+                    <field name="photo"/>
+                    <field name="description"/>
+                    <field name="priorite"/>
+                    <field name="gravite"/>
+                    <field name="geolocalisation"/>
+                    <field name="piece_jointe"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--CREER UNE ACTION-->
+
+        <record model="ir.actions.act_window" id="action_incidence_qualite_view">
+            <field name="name">Gestion Incident</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">incidence.qualite</field>
+            <field name="view_mode">form,tree</field>
+            <field name="view_id" ref="incidence_qualite_tree"/>
+        </record>
+
+        <!--creating menus-->
+        <menuitem id="agricol_root" name="Gestion Agricol" sequence="3" web_icon="production_agricol_nubium,static/description/logo.png"/>
+<!--        <menuitem id="agricol_production" name="Productions" parent="agricol_root" action="action_nubium_production_view" sequence="1"/>-->
+        <menuitem id="agricol_qualite" name="Qualites" parent="agricol_root" action="action_nubium_qualite_view" sequence="4"/>
+        <menuitem id="incidence_qualite" name="Incidences" parent="agricol_qualite" action="action_incidence_qualite_view" sequence="1"/>
+<!--        <menuitem id="agricol_root" name="Gestion Agricol" sequence="3" web_icon="production_agricol_nubium,static/description/logo.png"/>-->
+<!--        <menuitem id="agricol_production" name="Productions" parent="agricol_root" action="action_nubium_production_view" sequence="1"/>-->
+<!--        <menuitem id="activite_production" name="Activités" parent="agricol_production" action="action_activite_production_view" sequence="1"/>-->
+<!--        <menuitem id="intervension_production" name="Intervension" parent="agricol_production" action="action_nubium_production_view" sequence="1"/>-->
+<!--        <menuitem id="equipement_production" name="Equipement" parent="agricol_production" action="action_nubium_parcellaire_view" sequence="1"/>-->
+<!--        <menuitem id="create_parcelle" name="Create Parcelle" parent="agricol_root"-->
+<!--                  action="create_appointment_wizard" sequence="40"/>-->
+    </data>
+</odoo>

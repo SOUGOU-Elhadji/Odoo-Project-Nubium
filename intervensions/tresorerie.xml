@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <record id="create_tresorerie_form" model="ir.ui.view">
+         <field name="name">create.tresorerie.intervension</field>
+         <field name="model">create.tresorerie</field>
+         <field name="arch" type="xml">
+            <form string="Create Tresorerie">
+                <sheet>
+                    <h2>NOUVELLE TRESORERIE</h2>
+                        <group string="Informations générales" icon="fa-book">
+                            <group>
+                                <field name="name"/>
+                                <field name="devise"/>
+                                <field name="compte_bancaire"/>
+                                <field name="caisse"/>
+                            </group>
+                            <group>
+                                <field name="compte_courant"/>
+                                <field name="defaut"/>
+                                <field name="proprietaire_id"/>
+                            </group>
+                        </group>
+                        <group string="Compte bancaire" icon="fa-book">
+                            <group>
+                                <field name="titulaire"/>
+                                <field name="name_bank"/>
+                                <field name="address"/>
+                                <field name="iban_check"/>
+                                <field name="releve"/>
+                                <field name="iban"/>
+                            </group>
+                            <group>
+                                <field name="bic"/>
+                                <field name="pays"/>
+                                <field name="code_b"/>
+                                <field name="code_g"/>
+                                <field name="numero_co"/>
+                                <field name="cle_rib"/>
+                            </group>
+                        </group>
+                        <group string="Comptabilité" icon="fa-book">
+                            <group>
+                                <field name="compte_principal"/>
+                                <field name="journal"/>
+                                <field name="reconciliation"/>
+                            </group>
+                            <group>
+                                <field name="compte_attente"/>
+                                <field name="compta_detail"/>
+                            </group>
+                        </group>
+                        <group string="Pièces jointes" icon="fa-book">
+                            <group>
+                                <field name="piece_j"/>
+                            </group>
+                        </group>
+                        <hr></hr>
+                </sheet>
+            </form>
+         </field>
+     </record>
+
+    <!--CREATION VUE LISTE TREE-->
+
+        <record id="create_tresorerie_tree" model="ir.ui.view">
+            <field name="name">create.tresorerie.tree</field>
+            <field name="model">create.tresorerie</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="devise"/>
+                    <field name="compte_bancaire"/>
+                    <field name="caisse"/>
+                    <field name="compte_courant"/>
+                    <field name="defaut"/>
+                    <field name="proprietaire_id"/>
+                    <field name="titulaire"/>
+                    <field name="name_bank"/>
+                    <field name="address"/>
+                    <field name="iban_check"/>
+                    <field name="releve"/>
+                    <field name="iban"/>
+                    <field name="bic"/>
+                    <field name="pays"/>
+                    <field name="code_b"/>
+                    <field name="code_g"/>
+                    <field name="numero_co"/>
+                    <field name="cle_rib"/>
+                    <field name="compte_principal"/>
+                    <field name="journal"/>
+                    <field name="reconciliation"/>
+                    <field name="compte_attente"/>
+                    <field name="compta_detail"/>
+                    <field name="piece_j"/>
+                </tree>
+            </field>
+        </record>
+
+    <!--CREER UNE ACTION-->
+
+    <record id="create_tresorerie_intervension" model="ir.actions.act_window">
+        <field name="name">Create Tresorerie</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">create.tresorerie</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="create_tresorerie_form"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

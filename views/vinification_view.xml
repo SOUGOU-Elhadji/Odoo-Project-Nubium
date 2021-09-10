@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <!-- Form view definition -->
+        <record id="view_activite_vinification_form" model="ir.ui.view">
+            <field name="name">activite.vinification.form</field>
+            <field name="model">activite.vinification</field>
+            <field name="arch" type="xml">
+                <form string="Vinification">
+                    <sheet>
+                        <notebook>
+                            <page string="INFORMATION GENERALE">
+                                <group string="Informations générales" icon="fa-book">
+                                    <group>
+                                        <field name="agreage"/>
+                                        <field name="piece"/>
+                                        <field name="masse_nette"/>
+                                        <field name="unite"/>
+                                    </group>
+                                    <group>
+                                        <field name="echantillon"/>
+                                        <field name="indicateur"/>
+                                        <field name="unite_extrema"/>
+                                        <field name="indicateur_taille"/>
+                                    </group>
+                                    <group>
+                                        <field name="unite_taille"/>
+                                        <field name="valeur_min"/>
+                                        <field name="valeur_max"/>
+                                        <field name="commercialisable"/>
+                                    </group>
+                                    <group>
+                                        <field name="nom"/>
+                                        <field name="maladie"/>
+                                        <field name="malformation"/>
+                                        <field name="aucune"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                            <page string="COMPTAGES">
+                                <group string="Comptages">
+                                    <group>
+                                        <field name="comptage"/>
+                                        <field name="nom_comptage"/>
+                                        <field name="unite_densite"/>
+                                        <field name="unite_longueur"/>
+                                    </group>
+                                    <group>
+                                        <field name="pourcentage"/>
+                                        <field name="densite_theorique"/>
+                                        <field name="nombre_theorique"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                            <page string="SAISONNALITE">
+                                <group string="Saisonnalité">
+                                    <group>
+                                        <field name="saisonnalite"/>
+                                    </group>
+                                    <group>
+                                        <field name="nom_saisonnalite"/>
+                                    </group>
+                                </group>
+                            </page>
+
+                            <page string="ITINERAIRE CULTURAUX">
+                                <group string="Itinéraire culturaux">
+                                    <group>
+                                        <field name="itineraire"/>
+                                        <field name="nom_itineraire"/>
+                                        <field name="date_semis"/>
+                                        <field name="date_recolte"/>
+                                        <field name="intrui" invisible="1"/>
+                                    </group>
+                                    <group>
+                                        <field name="date_itineraire"/>
+                                        <field name="jour"/>
+                                        <field name="lost"/>
+                                        <field name="admin_id" invisible="1"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+         <!--CREATION VUE LISTE TREE-->
+
+        <record id="activite_vinification_tree" model="ir.ui.view">
+            <field name="name">activite.vinification.tree</field>
+            <field name="model">activite.vinification</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="agreage"/>
+                    <field name="piece"/>
+                    <field name="masse_nette"/>
+                    <field name="unite"/>
+                    <field name="echantillon"/>
+                    <field name="indicateur"/>
+                    <field name="unite_extrema"/>
+                    <field name="indicateur_taille"/>
+                    <field name="unite_taille"/>
+                    <field name="valeur_min"/>
+                    <field name="valeur_max"/>
+                    <field name="commercialisable" invisible="1"/>
+                    <field name="nom" invisible="1"/>
+                    <field name="maladie" invisible="1"/>
+                    <field name="malformation" invisible="1"/>
+                    <field name="aucune" invisible="1"/>
+                    <field name="comptage" invisible="1"/>
+                    <field name="nom_comptage" invisible="1"/>
+                    <field name="unite_densite" invisible="1"/>
+                    <field name="unite_longueur" invisible="1"/>
+                    <field name="pourcentage" invisible="1"/>
+                    <field name="densite_theorique" invisible="1"/>
+                    <field name="nombre_theorique" invisible="1"/>
+                    <field name="saisonnalite" invisible="1"/>
+                    <field name="nom_saisonnalite" invisible="1"/>
+                    <field name="itineraire" invisible="1"/>
+                    <field name="nom_itineraire" invisible="1"/>
+                    <field name="date_semis" invisible="1"/>
+                    <field name="date_recolte" invisible="1"/>
+                    <field name="intrui" invisible="1"/>
+                    <field name="date_itineraire"/>
+                    <field name="jour" invisible="1"/>
+                    <field name="admin_id" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--CREER UNE ACTION-->
+
+        <record model="ir.actions.act_window" id="activite_vinification_view">
+            <field name="name">Vinification</field>
+            <field name="res_model">activite.vinification</field>
+            <field name="view_mode">form,tree</field>
+            <field name="view_id" ref="activite_vinification_tree"/>
+        </record>
+
+    </data>
+</odoo>

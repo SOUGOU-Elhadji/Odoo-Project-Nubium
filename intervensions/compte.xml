@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <record id="create_compte_form" model="ir.ui.view">
+         <field name="name">create.compte.intervension</field>
+         <field name="model">create.compte</field>
+         <field name="arch" type="xml">
+            <form string="Create Compte">
+                <sheet>
+                    <h2>NOUVELLE COMPTE</h2>
+                        <group string="Informations générales" icon="fa-book">
+                            <group>
+                                <h5><u>Type</u></h5>
+                                <field name="general" attrs="{'invisible':['|',('auxiliaire','=',False),('compte_contralisateur','=',True),('numero_auxiliaire','=',True)]}"/>
+                                <field name="auxiliaire" attrs="{'invisible':['|',('general','=',False),('numero_c','=',True)]}"/>
+                                <field name="numero_c" attrs="{'invisible':['|',('auxiliaire','=',True),('compte_contralisateur','=',True),('numero_auxiliaire','=',True)]}"/>
+                                <field name="compte_contralisateur" attrs="{'invisible':['|',('general','=',False),('numero_c','=',True)]}"/>
+                            </group>
+                            <group>
+                                <field name="numero_auxiliaire" attrs="{'invisible':['|',('general','=',False),('numero_c','=',True)]}"/>
+                                <field name="nom"/>
+                                <field name="description"/>
+                                <field name="usager"/>
+                            </group>
+                        </group>
+                </sheet>
+            </form>
+         </field>
+     </record>
+
+    <!--CREATION VUE LISTE TREE-->
+
+        <record id="create_compte_tree" model="ir.ui.view">
+            <field name="name">create.compte.tree</field>
+            <field name="model">create.compte</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="general" attrs="{'invisible':['|',('auxiliaire','=',False),('compte_contralisateur','=',True),('numero_auxiliaire','=',True)]}"/>
+                    <field name="auxiliaire" attrs="{'invisible':['|',('general','=',False),('numero_c','=',True)]}"/>
+                    <field name="numero_c" attrs="{'invisible':['|',('auxiliaire','=',True),('compte_contralisateur','=',True),('numero_auxiliaire','=',True)]}"/>
+                    <field name="compte_contralisateur" attrs="{'invisible':['|',('general','=',False),('numero_c','=',True)]}"/>
+                    <field name="numero_auxiliaire" attrs="{'invisible':['|',('general','=',False),('numero_c','=',True)]}"/>
+                    <field name="nom"/>
+                    <field name="description"/>
+                    <field name="usager"/>
+                </tree>
+            </field>
+        </record>
+
+    <!--CREER UNE ACTION-->
+
+    <record id="create_compte_intervension" model="ir.actions.act_window">
+        <field name="name">Create Compte</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">create.compte</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="create_compte_form"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

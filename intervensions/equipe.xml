@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <record id="create_equipe_form" model="ir.ui.view">
+         <field name="name">create.equipe.intervension</field>
+         <field name="model">create.equipe</field>
+         <field name="arch" type="xml">
+            <form string="Create Equipe">
+                <sheet>
+                    <h2>NOUVELLE EQUIPE</h2>
+                        <group string="Informations générales" icon="fa-book">
+                            <group>
+                                <field name="nom"/>
+                                <field name="description"/>
+                            </group>
+                        </group>
+                </sheet>
+            </form>
+         </field>
+     </record>
+
+    <!--CREATION VUE LISTE TREE-->
+
+        <record id="create_equipe_tree" model="ir.ui.view">
+            <field name="name">create.equipe.tree</field>
+            <field name="model">create.equipe</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="nom"/>
+                    <field name="description"/>
+                </tree>
+            </field>
+        </record>
+
+    <!--CREER UNE ACTION-->
+
+    <record id="create_equipe_intervension" model="ir.actions.act_window">
+        <field name="name">Create Equipe</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">create.equipe</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="create_equipe_form"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

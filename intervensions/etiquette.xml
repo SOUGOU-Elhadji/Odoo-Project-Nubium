@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <record id="create_etiquette_form" model="ir.ui.view">
+         <field name="name">create.etiquette.intervension</field>
+         <field name="model">create.etiquette</field>
+         <field name="arch" type="xml">
+            <form string="Create Etiquette">
+                <sheet>
+                    <h2>NOUVELLE ETIQUETTE</h2>
+                        <group string="Informations générales" icon="fa-book">
+                            <group>
+                                <field name="name"/>
+                            </group>
+                        </group>
+                        <hr></hr>
+                </sheet>
+            </form>
+         </field>
+     </record>
+
+    <!--CREATION VUE LISTE TREE-->
+
+        <record id="create_etiquette_tree" model="ir.ui.view">
+            <field name="name">create.etiquette.tree</field>
+            <field name="model">create.etiquette</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+    <!--CREER UNE ACTION-->
+
+    <record id="create_etiquette_intervensions" model="ir.actions.act_window">
+        <field name="name">Create Etiquette</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">create.etiquette</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="create_etiquette_form"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

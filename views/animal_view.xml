@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <!-- Form view definition -->
+        <record id="view_activite_animal_form" model="ir.ui.view">
+            <field name="name">activite.animal.form</field>
+            <field name="model">activite.animal</field>
+            <field name="arch" type="xml">
+                <form string="Production animale">
+                    <sheet>
+                        <notebook>
+                            <page string="SAISONNALITE">
+                                <group string="Saisonnalité">
+                                    <group>
+                                        <field name="espece"/>
+                                        <field name="admin_id" invisible="1"/>
+                                    </group>
+                                    <group>
+                                        <field name="duree_vie"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+         <!--CREATION VUE LISTE TREE-->
+
+        <record id="activite_animal_tree" model="ir.ui.view">
+            <field name="name">activite.animal.tree</field>
+            <field name="model">activite.animal</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="espece"/>
+                    <field name="admin_id" invisible="1"/>
+                    <field name="duree_vie"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--CREER UNE ACTION-->
+
+        <record model="ir.actions.act_window" id="activite_animal_view">
+            <field name="name">Production animale</field>
+            <field name="res_model">activite.animal</field>
+            <field name="view_mode">form,tree</field>
+            <field name="view_id" ref="activite_animal_tree"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <!-- Form view definition -->
+        <record id="view_activite_production_form" model="ir.ui.view">
+            <field name="name">activite.production.form</field>
+            <field name="model">activite.production</field>
+            <field name="arch" type="xml">
+                <form string="Activite">
+<!--                    <header>-->
+<!--                        <button name="580" string="Imprimer le cahier de traçabilité" icon="fa-print" type="action" groups="hr.group_hr_manager"/>-->
+<!--                        <button name="580" string="Extraire" icon="fa-download" type="action" groups="hr.group_hr_manager"/>-->
+<!--                    </header>-->
+                    <sheet>
+                         <h2>NOUVELLE ACTIVITE</h2>
+                        <hr></hr>
+                                <field name="image" widget="image" class="oe_avatar"/>
+                        <div>
+                            <div class="oe_left">
+                                <div class="oe_title">
+                                    <h3>
+                                    <label for="name" invisible="1"/>
+                                    </h3>
+                                    <h2>
+                                        <field name="name" class="oe_inline" placeholder="Nom de l'activité"/>
+                                    </h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <group string="Informations générales" icon="fa-book">
+                            <group>
+                                <field name="famille"/>
+                                <field name="system_prod"/>
+                                <h6><b>Type de centre analytique</b></h6>
+                                <field name="principal" attrs="{'invisible':['|',('auxiliaire','=',True),('independante','=',True)]}"/>
+                                <field name="auxiliaire" attrs="{'invisible':['|',('principal','=',True),('independante','=',True)]}"/>
+                                <field name="independante" attrs="{'invisible':['|',('principal','=',True),('auxiliaire','=',True)]}"/>
+                            </group>
+                            <group>
+                                <field name="date_debut"/>
+                                <field name="date_fin"/>
+                                <field name="description"/>
+                            </group>
+                            <group string="Répartition" icon="fa-book">
+                                    <field name="distribution_activite"/>
+                            </group>
+                            <group>
+                                <h6><b>Cycle de production</b></h6>
+                                <field name="annuelle" attrs="{'invisible':['|',('perenne','=',True),('autrui','=',True)]}"/>
+                                <field name="perenne" attrs="{'invisible':['|',('annuelle','=',True),('autrui','=',True)]}"/>
+                                <field name="autrui" invisible="1" attrs="{'invisible':['|',('annuelle','=',True),('perenne','=',True)]}"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Administratifs">
+                                <field name="administratif_id" string="Affecter un Budget">
+                                <tree>
+                                    <field name="produit_id" invisible="1"/>
+                                    <field name="admin_id" invisible="1"/>
+                                    <field name="recette_id"/>
+                                    <field name="depense_id"/>
+                                    <field name="montant_total" style="color: red; font-weight:bold"/>
+                                </tree>
+                                </field>
+                            </page>
+
+                            <page string="Transformation">
+                                <field name="transformation_id">
+                                <tree>
+                                    <field name="agreage" invisible="1"/>
+                                    <field name="piece"/>
+                                    <field name="masse_nette"/>
+                                    <field name="unite" invisible="1"/>
+                                    <field name="echantillon"/>
+                                    <field name="indicateur"/>
+                                    <field name="unite_extrema" invisible="1"/>
+                                    <field name="indicateur_taille" invisible="1"/>
+                                    <field name="unite_taille" invisible="1"/>
+                                    <field name="valeur_min"/>
+                                    <field name="valeur_max"/>
+                                    <field name="commercialisable" invisible="1"/>
+                                    <field name="nom" invisible="1"/>
+                                    <field name="maladie" invisible="1"/>
+                                    <field name="malformation" invisible="1"/>
+                                    <field name="aucune" invisible="1"/>
+                                    <field name="comptage" invisible="1"/>
+                                    <field name="nom_comptage" invisible="1"/>
+                                    <field name="unite_densite" invisible="1"/>
+                                    <field name="unite_longueur" invisible="1"/>
+                                    <field name="pourcentage" invisible="1"/>
+                                    <field name="densite_theorique" invisible="1"/>
+                                    <field name="nombre_theorique" invisible="1"/>
+                                    <field name="saisonnalite" invisible="1"/>
+                                    <field name="nom_saisonnalite" invisible="1"/>
+                                    <field name="itineraire" invisible="1"/>
+                                    <field name="nom_itineraire" invisible="1"/>
+                                    <field name="date_semis" invisible="1"/>
+                                    <field name="date_recolte" invisible="1"/>
+                                    <field name="intrui" invisible="1"/>
+                                    <field name="date_itineraire" invisible="1"/>
+                                    <field name="jour" invisible="1"/>
+                                    <field name="lost" invisible="1"/>
+                                    <field name="admin_id" invisible="1"/>
+                                </tree>
+                                </field>
+<!--                                <field name="transformation_id"/>-->
+                            </page>
+                            <page string="Vinification">
+                                <field name="vinification_id"/>
+                                <tree>
+<!--                                    <field name="agreage"/>-->
+<!--                                    <field name="piece" invisible="1"/>-->
+<!--                                    <field name="masse_nette" invisible="1"/>-->
+<!--                                    <field name="unite" invisible="1"/>-->
+<!--                                    <field name="echantillon" invisible="1"/>-->
+<!--                                    <field name="indicateur" invisible="1"/>-->
+<!--                                    <field name="unite_extrema" invisible="1"/>-->
+<!--                                    <field name="indicateur_taille" invisible="1"/>-->
+<!--                                    <field name="unite_taille" invisible="1"/>-->
+<!--                                    <field name="valeur_min" invisible="1"/>-->
+<!--                                    <field name="valeur_max" invisible="1"/>-->
+<!--                                    <field name="commercialisable"/>-->
+<!--                                    <field name="nom"/>-->
+<!--                                    <field name="maladie" invisible="1"/>-->
+<!--                                    <field name="malformation" invisible="1"/>-->
+<!--                                    <field name="aucune" invisible="1"/>-->
+<!--                                    <field name="comptage" invisible="1"/>-->
+<!--                                    <field name="nom_comptage" invisible="1"/>-->
+<!--                                    <field name="unite_densite" invisible="1"/>-->
+<!--                                    <field name="unite_longueur" invisible="1"/>-->
+<!--                                    <field name="pourcentage" invisible="1"/>-->
+<!--                                    <field name="densite_theorique" invisible="1"/>-->
+<!--                                    <field name="nombre_theorique" invisible="1"/>-->
+<!--                                    <field name="saisonnalite" invisible="1"/>-->
+<!--                                    <field name="nom_saisonnalite"/>-->
+<!--                                    <field name="itineraire" invisible="1"/>-->
+<!--                                    <field name="nom_itineraire"/>-->
+<!--                                    <field name="date_semis"/>-->
+<!--                                    <field name="date_recolte"/>-->
+<!--                                    <field name="intrui" invisible="1"/>-->
+<!--                                    <field name="date_itineraire" invisible="1"/>-->
+<!--                                    <field name="jour"/>-->
+<!--                                    <field name="lost" invisible="1"/>-->
+<!--                                    <field name="admin_id" invisible="1"/>-->
+                                </tree>
+                            </page>
+                            <page string="Animal">
+                                <field name="animal_id"/>
+                                <tree>
+<!--                                    <field name="agreage"/>-->
+<!--                                    <field name="piece"/>-->
+<!--                                    <field name="masse_nette"/>-->
+<!--                                    <field name="unite"/>-->
+<!--                                    <field name="echantillon"/>-->
+<!--                                    <field name="indicateur"/>-->
+<!--                                    <field name="unite_extrema"/>-->
+<!--                                    <field name="indicateur_taille"/>-->
+<!--                                    <field name="unite_taille"/>-->
+<!--                                    <field name="valeur_min"/>-->
+<!--                                    <field name="valeur_max"/>-->
+<!--                                    <field name="commercialisable"/>-->
+<!--                                    <field name="nom"/>-->
+<!--                                    <field name="maladie"/>-->
+<!--                                    <field name="malformation"/>-->
+<!--                                    <field name="aucune"/>-->
+<!--                                    <field name="comptage"/>-->
+<!--                                    <field name="nom_comptage"/>-->
+<!--                                    <field name="unite_densite"/>-->
+<!--                                    <field name="unite_longueur"/>-->
+<!--                                    <field name="pourcentage"/>-->
+<!--                                    <field name="densite_theorique"/>-->
+<!--                                    <field name="nombre_theorique"/>-->
+<!--                                    <field name="saisonnalite"/>-->
+<!--                                    <field name="nom_saisonnalite"/>-->
+<!--                                    <field name="itineraire"/>-->
+<!--                                    <field name="nom_itineraire"/>-->
+<!--                                    <field name="date_semis"/>-->
+<!--                                    <field name="date_recolte"/>-->
+<!--                                    <field name="intrui" invisible="1"/>-->
+<!--                                    <field name="date_itineraire" invisible="1"/>-->
+<!--                                    <field name="jour"/>-->
+<!--                                    <field name="lost" invisible="1"/>-->
+<!--                                    <field name="admin_id" invisible="1"/>-->
+                                </tree>
+                            </page>
+                            <page string="Viticol">
+                                <field name="viticol_id"/>
+                                <tree>
+<!--                                    <field name="agreage"/>-->
+<!--                                    <field name="piece"/>-->
+<!--                                    <field name="masse_nette"/>-->
+<!--                                    <field name="unite"/>-->
+<!--                                    <field name="echantillon"/>-->
+<!--                                    <field name="indicateur"/>-->
+<!--                                    <field name="unite_extrema"/>-->
+<!--                                    <field name="indicateur_taille"/>-->
+<!--                                    <field name="unite_taille"/>-->
+<!--                                    <field name="valeur_min"/>-->
+<!--                                    <field name="valeur_max"/>-->
+<!--                                    <field name="commercialisable"/>-->
+<!--                                    <field name="nom"/>-->
+<!--                                    <field name="maladie"/>-->
+<!--                                    <field name="malformation"/>-->
+<!--                                    <field name="aucune"/>-->
+<!--                                    <field name="comptage"/>-->
+<!--                                    <field name="nom_comptage"/>-->
+<!--                                    <field name="unite_densite"/>-->
+<!--                                    <field name="unite_longueur"/>-->
+<!--                                    <field name="pourcentage"/>-->
+<!--                                    <field name="densite_theorique"/>-->
+<!--                                    <field name="nombre_theorique"/>-->
+<!--                                    <field name="saisonnalite"/>-->
+<!--                                    <field name="nom_saisonnalite"/>-->
+<!--                                    <field name="itineraire"/>-->
+<!--                                    <field name="nom_itineraire"/>-->
+<!--                                    <field name="date_semis"/>-->
+<!--                                    <field name="date_recolte"/>-->
+<!--                                    <field name="intrui" invisible="1"/>-->
+<!--                                    <field name="date_itineraire" invisible="1"/>-->
+<!--                                    <field name="jour"/>-->
+<!--                                    <field name="lost" invisible="1"/>-->
+<!--                                    <field name="admin_id" invisible="1"/>-->
+                                </tree>
+                            </page>
+                            <page string="Végétal">
+                                <field name="vegetale_id"/>
+                                <tree>
+<!--                                    <field name="agreage"/>-->
+<!--                                    <field name="piece"/>-->
+<!--                                    <field name="masse_nette"/>-->
+<!--                                    <field name="unite"/>-->
+<!--                                    <field name="echantillon"/>-->
+<!--                                    <field name="indicateur"/>-->
+<!--                                    <field name="unite_extrema"/>-->
+<!--                                    <field name="indicateur_taille"/>-->
+<!--                                    <field name="unite_taille"/>-->
+<!--                                    <field name="valeur_min"/>-->
+<!--                                    <field name="valeur_max"/>-->
+<!--                                    <field name="commercialisable"/>-->
+<!--                                    <field name="nom"/>-->
+<!--                                    <field name="maladie"/>-->
+<!--                                    <field name="malformation"/>-->
+<!--                                    <field name="aucune"/>-->
+<!--                                    <field name="comptage"/>-->
+<!--                                    <field name="nom_comptage"/>-->
+<!--                                    <field name="unite_densite"/>-->
+<!--                                    <field name="unite_longueur"/>-->
+<!--                                    <field name="pourcentage"/>-->
+<!--                                    <field name="densite_theorique"/>-->
+<!--                                    <field name="nombre_theorique"/>-->
+<!--                                    <field name="saisonnalite"/>-->
+<!--                                    <field name="nom_saisonnalite"/>-->
+<!--                                    <field name="itineraire"/>-->
+<!--                                    <field name="nom_itineraire"/>-->
+<!--                                    <field name="date_semis"/>-->
+<!--                                    <field name="date_recolte"/>-->
+<!--                                    <field name="intrui" invisible="1"/>-->
+<!--                                    <field name="date_itineraire" invisible="1"/>-->
+<!--                                    <field name="jour"/>-->
+<!--                                    <field name="lost" invisible="1"/>-->
+<!--                                    <field name="admin_id" invisible="1"/>-->
+                                </tree>
+                            </page>
+                            <page string="Prestation de service">
+                                <field name="prestation_id"/>
+                                <tree>
+<!--                                    <field name="agreage"/>-->
+<!--                                    <field name="piece"/>-->
+<!--                                    <field name="masse_nette"/>-->
+<!--                                    <field name="unite"/>-->
+<!--                                    <field name="echantillon"/>-->
+<!--                                    <field name="indicateur"/>-->
+<!--                                    <field name="unite_extrema"/>-->
+<!--                                    <field name="indicateur_taille"/>-->
+<!--                                    <field name="unite_taille"/>-->
+<!--                                    <field name="valeur_min"/>-->
+<!--                                    <field name="valeur_max"/>-->
+<!--                                    <field name="commercialisable"/>-->
+<!--                                    <field name="nom"/>-->
+<!--                                    <field name="maladie"/>-->
+<!--                                    <field name="malformation"/>-->
+<!--                                    <field name="aucune"/>-->
+<!--                                    <field name="comptage"/>-->
+<!--                                    <field name="nom_comptage"/>-->
+<!--                                    <field name="unite_densite"/>-->
+<!--                                    <field name="unite_longueur"/>-->
+<!--                                    <field name="pourcentage"/>-->
+<!--                                    <field name="densite_theorique"/>-->
+<!--                                    <field name="nombre_theorique"/>-->
+<!--                                    <field name="saisonnalite"/>-->
+<!--                                    <field name="nom_saisonnalite"/>-->
+<!--                                    <field name="itineraire"/>-->
+<!--                                    <field name="nom_itineraire"/>-->
+<!--                                    <field name="date_semis"/>-->
+<!--                                    <field name="date_recolte"/>-->
+<!--                                    <field name="intrui" invisible="1"/>-->
+<!--                                    <field name="date_itineraire" invisible="1"/>-->
+<!--                                    <field name="jour"/>-->
+<!--                                    <field name="lost" invisible="1"/>-->
+<!--                                    <field name="admin_id" invisible="1"/>-->
+                                </tree>
+                            </page>
+                            <page string="Maintenance">
+                                <i>Aucune saisie à effectuer dans cette partie</i>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+         <!--CREATION VUE LISTE KANBAN-->
+
+        <record id="activite_production_kanban" model="ir.ui.view">
+        <field name="name">activite.production.kanban</field>
+        <field name="model">activite.production</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="famille">
+                    <field name="id"/>
+                    <field name="image"/>
+<!--                    <field name="name"/>-->
+<!--                    <field name="principal"/>-->
+<!--                    <field name="auxiliaire"/>-->
+<!--                    <field name="independante"/>-->
+<!--                    <field name="system_prod"/>-->
+                    <field name="famille"/>
+<!--                    <field name="annuelle"/>-->
+<!--                    <field name="perenne"/>-->
+<!--                    <field name="autrui"/>-->
+<!--                    <field name="description"/>-->
+<!--                    <field name="date_debut"/>-->
+<!--                    <field name="date_fin"/>-->
+<!--                    <field name="distribution_activite"/>-->
+<!--                    <field name="name_id"/>-->
+<!--                    <field name="quantite"/>-->
+<!--                    <field name="methode_calcul"/>-->
+<!--                    <field name="prix_unitaire"/>-->
+<!--                    <field name="montant"/>-->
+<!--                    <field name="agreage"/>-->
+<!--                    <field name="piece"/>-->
+<!--                    <field name="masse_nette"/>-->
+<!--                    <field name="unite"/>-->
+<!--                    <field name="echantillon"/>-->
+<!--                    <field name="indicateur"/>-->
+<!--                    <field name="unite_extrema"/>-->
+<!--                    <field name="indicateur_taille"/>-->
+<!--                    <field name="unite_taille"/>-->
+<!--                    <field name="valeur_min"/>-->
+<!--                    <field name="valeur_max"/>-->
+<!--                    <field name="commercialisable"/>-->
+<!--                    <field name="nom"/>-->
+<!--                    <field name="maladie"/>-->
+<!--                    <field name="malformation"/>-->
+<!--                    <field name="aucune"/>-->
+<!--                    <field name="comptage"/>-->
+<!--                    <field name="nom_comptage"/>-->
+<!--                    <field name="unite_densite"/>-->
+<!--                    <field name="unite_longueur"/>-->
+<!--                    <field name="pourcentage">%</field>-->
+<!--                    <field name="densite_theorique"/>-->
+<!--                    <field name="nombre_theorique"/>-->
+<!--                    <field name="saisonnalite"/>-->
+<!--                    <field name="nom_saisonnalite"/>-->
+<!--                    <field name="itineraire"/>-->
+<!--                    <field name="nom_itineraire"/>-->
+<!--                    <field name="date_semis"/>-->
+<!--                    <field name="date_recolte"/>-->
+<!--                    <field name="intrui" invisible="1"/>-->
+<!--                    <field name="date_itineraire"/>-->
+<!--                    <field name="jour"/>-->
+<!--                    <field name="espece"/>-->
+                    <field name="vinification_id"/>
+                    <field name="transformation_id"/>
+                    <field name="animal_id"/>
+                    <field name="viticol_id"/>
+                    <field name="vegetale_id"/>
+                    <field name="prestation_id"/>
+                    <field name="administratif_id"/>
+<!--                    <field name="administratif_id"/>-->
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_activite_production_kanban">
+<!--                            <field name="image_128" widget="image" class="o_kanban_image_fill_left" options="{'zoom': true, 'zoom_delay': 1000, 'background': true, 'preventClicks': false}"/>-->
+                            <t t-if="record.image.raw_value">
+                                <div class="o_kanban_image_fill_left d-none d-md-block"
+                                     t-attf-style="background-image:url('#{kanban_image('activite.production', 'image', record.id.raw_value)}')"/>
+                            </t>
+                            <t t-else="">
+                                <img class="o_kanban_image" alt="Avatar" t-att-src='_s + "/base/static/img/avatar.png"'/>
+                            </t>
+
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title">
+                                    <b style="color: #875A7B; text-transform: uppercase"><field name="display_name"/></b>
+                                </strong>
+                                <div class="o_kanban_tags_section"/>
+                                <ul style="font-weight: bold">
+                                    <li><span style="color: #00A09D">Famille</span> : <field name="famille"/></li>
+                                    <li><span style="color: #00A09D">Date de début</span> : <field name="date_debut"/></li>
+                                    <li><span style="color: #00A09D">Date de fin</span> : <field name="date_fin"/></li>
+                                    <li><span style="color: #00A09D">Budget</span> : <field name="administratif_id" icon="fa-archive"/></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                    <searchpanel>
+                        <field name="name" icon="fa-building"/>
+                        <field name="name" select="multi" icon="fa-tags"/>
+                    </searchpanel>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+         <!--CREATION VUE LISTE TREE-->
+
+        <record id="activite_production_tree" model="ir.ui.view">
+            <field name="name">activite.production.tree</field>
+            <field name="model">activite.production</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="image"/>
+                    <field name="name"/>
+                    <field name="principal" invisible="1"/>
+                    <field name="auxiliaire" invisible="1"/>
+                    <field name="independante" invisible="1"/>
+                    <field name="system_prod"/>
+                    <field name="famille"/>
+                    <field name="annuelle" invisible="1"/>
+                    <field name="perenne" invisible="1"/>
+                    <field name="autrui" invisible="1"/>
+                    <field name="description"/>
+                    <field name="date_debut"/>
+                    <field name="date_fin"/>
+                    <field name="distribution_activite" invisible="1"/>
+
+                    <field name="vinification_id" invisible="1"/>
+                    <field name="transformation_id" invisible="1"/>
+                    <field name="animal_id" invisible="1"/>
+                    <field name="viticol_id" invisible="1"/>
+                    <field name="vegetale_id" invisible="1"/>
+                    <field name="prestation_id" invisible="1"/>
+                    <field name="administratif_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--CREER UNE ACTION-->
+
+        <record model="ir.actions.act_window" id="action_activite_production_view">
+            <field name="name">Activités</field>
+            <field name="res_model">activite.production</field>
+            <field name="view_mode">form,kanban,tree</field>
+            <field name="view_id" ref="activite_production_kanban"/>
+        </record>
+
+
+        <!--creating menus-->
+        <menuitem id="agricol_root" name="Production Agricole" sequence="4" web_icon="production_agricol_nubium,static/description/logo.png"/>
+        <menuitem id="agricol_production" name="Productions" parent="agricol_root" action="action_nubium_production_view" sequence="1"/>
+        <menuitem id="activite_production" name="Activites" parent="agricol_production" action="action_activite_production_view" sequence="1"/>
+
+    </data>
+</odoo>

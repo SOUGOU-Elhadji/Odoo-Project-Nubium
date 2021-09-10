@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+     <record id="create_responsable_form" model="ir.ui.view">
+         <field name="name">create.responsable.intervension</field>
+         <field name="model">create.responsable</field>
+         <field name="arch" type="xml">
+            <form string="Create Responsable">
+                <sheet>
+                    <h2>NOUVELLE RESPONSABLE</h2>
+                        <group string="Informations générales" icon="fa-book">
+                            <group>
+                                <field name="nom_famille"/>
+                                <field name="prenom"/>
+                                <field name="langue"/>
+                            </group>
+                            <group>
+                                <field name="email"/>
+                                <field name="password"/>
+                                <field name="password_confirm"/>
+                            </group>
+                        </group>
+                        <group string="Fonction" icon="fa-book">
+                            <group>
+                                <field name="personne_id"/>
+                                <field name="travaillant"/>
+                            </group>
+                            <group>
+                                <field name="emploi_role"/>
+                                <field name="equipe_id"/>
+                            </group>
+                        </group>
+                        <group string="Accès" icon="fa-book">
+                            <group>
+                                <field name="admin_systeme"/>
+                                <field name="role_id"/>
+                            </group>
+                        </group>
+                        <hr></hr>
+                </sheet>
+            </form>
+         </field>
+     </record>
+
+    <!--CREATION VUE LISTE TREE-->
+
+        <record id="create8responsable_tree" model="ir.ui.view">
+            <field name="name">create.responsable.tree</field>
+            <field name="model">create.responsable</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="nom_famille"/>
+                    <field name="prenom"/>
+                    <field name="langue"/>
+                    <field name="email"/>
+                    <field name="password"/>
+                    <field name="password_confirm"/>
+                    <field name="personne_id"/>
+                    <field name="travaillant"/>
+                    <field name="emploi_role"/>
+                    <field name="equipe_id"/>
+                    <field name="admin_systeme"/>
+                    <field name="role_id"/>
+                </tree>
+            </field>
+        </record>
+
+    <!--CREER UNE ACTION-->
+
+    <record id="create_responsable_intervension" model="ir.actions.act_window">
+        <field name="name">Create Responsable</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">create.responsable</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="create_responsable_form"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

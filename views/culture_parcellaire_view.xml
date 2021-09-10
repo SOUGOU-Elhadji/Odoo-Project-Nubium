@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+        <record id="view_culture_parcellaire_form" model="ir.ui.view">
+            <field name="name">culture.parcellaire.form</field>
+            <field name="model">culture.parcellaire</field>
+            <field name="arch" type="xml">
+                <form string="Culture">
+                <header>
+                        <button name="580" string="Imprimer le cahier de traçabilité" icon="fa-print" type="action" groups="hr.group_hr_manager" class="btn-primary"/>
+                        <button name="580" string="Extraire" icon="fa-download" type="action" groups="hr.group_hr_manager" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <h2>Nouvel Analyse</h2>
+                    <hr></hr>
+                        <group string="Informations générales" icon="fa-book">
+                            <group>
+                                <field name="name"/>
+                                <field name="numero_travail"/>
+                                <h4><b>Période</b></h4>
+                                <field name="date_debut"/>
+                                <field name="date_fin"/>
+                            </group>
+                            <group>
+                                <field name="incident"/>
+                                <field name="description"/>
+                                <field name="probleme" attrs="{'invisible':['|',('description_probleme','=',True),('intrui','=',True)]}"/>
+                                <field name="description_probleme" attrs="{'invisible':['|',('intrui','=',True),('intrui','=',True)]}"/>
+                                <field name="intrui" attrs="{'invisible':['|',('probleme','=',False),('description_probleme','=',False)]}"/>
+                            </group>
+                            <group>
+                                <field name="compteur"/>
+                                <field name="parcelle"/>
+                                <field name="zone_travaille"/>
+                            </group>
+                        </group>
+                </sheet>
+            </form>
+            </field>
+        </record>
+
+         <!--CREATION VUE LISTE TREE-->
+
+        <record id="culture_parcellaire_tree" model="ir.ui.view">
+            <field name="name">culture.parcellaire.tree</field>
+            <field name="model">culture.parcellaire</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="numero_travail"/>
+                    <field name="date_debut"/>
+                    <field name="date_fin"/>
+                    <field name="incident"/>
+                    <field name="description"/>
+                    <field name="probleme"/>
+                    <field name="description_probleme"/>
+                    <field name="intrui" invisible="1"/>
+                    <field name="compteur"/>
+                    <field name="parcelle"/>
+                    <field name="zone_travaille"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--CREER UNE ACTION-->
+
+        <record model="ir.actions.act_window" id="action_culture_parcellaire_view">
+            <field name="name">Gestion Culture</field>
+            <field name="res_model">culture.parcellaire</field>
+            <field name="view_mode">form,tree</field>
+            <field name="view_id" ref="culture_parcellaire_tree"/>
+        </record>
+
+        <!--creating menus-->
+        <menuitem id="agricol_root" name="Production Agricole" sequence="4" web_icon="production_agricol_nubium,static/description/logo.png"/>
+        <menuitem id="agricol_parcellaire" name="Parcellaires" parent="agricol_root" action="action_nubium_parcellaire_view" sequence="3"/>
+        <menuitem id="culture_parcellaire" name="Cultures" parent="agricol_parcellaire" action="action_culture_parcellaire_view" sequence="1"/>
+    </data>
+</odoo>
